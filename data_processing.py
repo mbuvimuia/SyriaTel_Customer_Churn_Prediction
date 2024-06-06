@@ -24,7 +24,7 @@ class DataProcessor:
     
     def _handle_missing_values(self):
         '''Handle missing values in the data'''
-        self.data.fillna(self.data.mean(), inplace=True)
+        self.data.fillna(method='ffill', inplace=True)
 
     def _encode_categorical_features(self):
         '''Encode categorical features in the data'''
@@ -66,23 +66,50 @@ class DataAnalysis:
         plt.show()
     
     def univariate_analysis(self, column):
-        '''Plot and describe a single feature'''
-        plt.figure(figsize=(10, 6))
-        sns.histplot(self.data[column], kde=True)
-        plt.title(f'Distribution of {column}')
+        '''Perform univariate analysis on all columns and produce a single output with all plots'''
+        num_columns = self.data.shape[1]
+        num_rows = num_columns // 4 + (num_columns % 4 > 0)
+        
+        fig, axes = plt.subplots(num_rows, 4, figsize=(20, 5 * num_rows))
+        axes = axes.flatten()
+        
+        for i, column in enumerate(self.data.columns):
+            if self.data[column].dtype == 'object':
+                sns.countplot(x=self.data[column], ax=axes[i])
+            else:
+                sns.histplot(self.data[column], kde=True, ax=axes[i])
+            
+            axes[i].set_title(column)
+        
+        for j in range(i + 1, len(axes)):
+            fig.delaxes(axes[j])
+        
+        plt.tight_layout()
         plt.show()
-        return self.data[column].describe()
     
-    def bivariate_analysis(self, feature, target='target'):
-        '''Plot and describe the relationship between a feature and the target'''
-        plt.figure(figsize=(10, 6))
-        if self.data[feature].dtype == 'object':
-            sns.countplot(x=feature, hue=target, data=self.data)
-        else:
-            sns.boxplot(x=target, y=feature, data=self.data)
-        plt.title(f'{feature} vs {target}')
+    def bivariate_analysis(self, target='target'):
+        '''Perform bivariate analysis for all columns with respect to the target variable'''
+        # Convert boolean target column to string for seaborn compatibility
+        if self.data[target].dtype == 'bool':
+            self.data[target]  = self.data[target].astype(str)
+        elif self.data[target].dtype == 'category':
+            self.data[target] = self.data[target].astype(str)
+
+
+        
+        num_cols = len(self.data.columns)
+        plt.figure(figsize=(20, 4* num_cols))
+        for i, column in enumerate(self.data.columns):
+            if column == target:
+                continue
+            plt.subplot(num_cols, 1, i + 1)
+            if self.data[column].dtype == 'object':
+                sns.countplot(x=column, hue=target, data=self.data)
+            else:
+                sns.histplot(self.data, x=column, hue=target, kde=True, element='step')
+            plt.title(f'{column} vs {target}')
+        plt.tight_layout()
         plt.show()
-        return self.data.grouby(target)[feature].describe()
     
     def check_imbalance(self, target='target'):
         '''Check for class imbalance in the target variable'''
