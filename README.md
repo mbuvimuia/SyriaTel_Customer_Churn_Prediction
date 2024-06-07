@@ -53,7 +53,9 @@ Gradient Boosting Model
 - Recall: 0.82
 - F1 Score: 0.85
 - AUC Score: 0.94
+![ROC Curve](image.png)
 - AP: 0.88
+![Precision-Recall-Curve](image-1.png)
 
 Random Forest Model(Alternative Model)
 - Accuracy: 0.94
@@ -61,7 +63,9 @@ Random Forest Model(Alternative Model)
 - Recall: 0.79
 - F1 Score: 0.80
 - AUC Score: 0.94
+![ROC Curve](image-2.png)
 - AP Score: 0.87
+![Precision-Recall-Curve](image-3.png)
 
 # Usage
 To run this project locally
