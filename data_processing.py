@@ -7,7 +7,7 @@ from sklearn.preprocessing import OneHotEncoder
 from imblearn.over_sampling import SMOTE
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.model_selection import learning_curve
-from sklearn.metrics import confusion_matrix, roc_curve, precision_recall_curve, ConfusionMatrixDisplay, RocCurveDisplay, PrecisionRecallDisplay
+from sklearn.metrics import confusion_matrix,ConfusionMatrixDisplay, RocCurveDisplay, PrecisionRecallDisplay
 import numpy as np
 
 
@@ -199,7 +199,8 @@ class ModelEvaluation:
         y_pred_prob = self.model.predict_proba(self.X_test)[:, 1]
         PrecisionRecallDisplay.from_predictions(self.y_test, y_pred_prob)
         plt.show()
-    
+
+
 
 
     
