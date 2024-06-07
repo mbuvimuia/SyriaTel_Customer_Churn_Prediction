@@ -1,7 +1,7 @@
 # SyriaTel Customer Churn Prediction
 
 ## Description
-[This repository contains a machine learning project aimed at predicting customer churn for a telecommunications company called SyriaTel. The project is based on the [Kaggle dataset](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset) and uses a variety of classification algorithms to predict customer churn. ]
+This repository contains a machine learning project aimed at predicting customer churn for a telecommunications company called SyriaTel. The project is based on the [Kaggle dataset](https://www.kaggle.com/becksddf/churn-in-telecoms-dataset) and uses a variety of classification algorithms to predict customer churn. 
 
 ## Table of Contents
 
