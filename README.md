@@ -205,19 +205,11 @@ SyriaTel_Customer_Churn_Prediction/
 - **A/B Testing**: Validate retention strategies through controlled experiments
 - **Automated Retraining**: Implement MLOps pipeline for model updates
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 📧 Contact
 
 For questions or collaboration opportunities, please reach out:
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+- GitHub: [@mbuvimuia](https://github.com/mbuvimuia)
+- Email: innocentm.mbuvi@gmail.com
 
 ---
 
